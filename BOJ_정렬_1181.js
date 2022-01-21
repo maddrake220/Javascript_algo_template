@@ -37,3 +37,14 @@ function solution() {
 }
 
 console.log(solution());
+
+
+// 참고할 만한 코드 2
+const fs = require('fs');
+const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
+let input = fs.readFileSync(filePath).toString().trim().split("\n");
+
+const N = input.shift();
+const sorted = input.sort((a, b) => a.length - b.length || a.localeCompare(b));
+const answer = new Set(sorted);
+console.log(Array.from(answer).join('\n'));
